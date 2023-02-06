@@ -10,7 +10,7 @@ class MaxIntSet
     if is_valid?(num)
       @store[num] = true
     else
-      raise "out of bounds"
+      raise "Out of bounds"
     end
   end
 
@@ -18,7 +18,7 @@ class MaxIntSet
     if is_valid?(num)
       @store[num] = false
     else
-      raise "out of bounds"
+      raise "Out of bounds"
     end
   end
 
@@ -26,7 +26,7 @@ class MaxIntSet
     if is_valid?(num) # checking the range inclusion
       return @store[num]
     else
-      raise "out of bounds"
+      raise "Out of bounds"
     end
   end
 
@@ -112,7 +112,7 @@ class ResizingIntSet
   end
 
   def insert(num)
-    if self.inlude?(num)
+    if self.include?(num)
       return
     else
       @count += 1
@@ -128,6 +128,7 @@ class ResizingIntSet
   def remove(num)
     if self.include?(num)
       self[num].delete(num)
+      @count -= 1
     end
   end
 
@@ -157,6 +158,7 @@ class ResizingIntSet
     
     tmp.each do |ele|
       self.insert(ele)
+      @count -= 1
     end
   end
 
