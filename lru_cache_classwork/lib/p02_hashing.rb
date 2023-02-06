@@ -1,14 +1,16 @@
 class Integer
   # Integer#hash already implemented for you
+
 end
 
 class Array
   def hash
+
   end
 end
 
 class String
-  def hash
+  def hash  
   end
 end
 
