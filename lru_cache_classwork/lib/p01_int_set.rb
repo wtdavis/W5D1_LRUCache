@@ -44,18 +44,20 @@ end
 
 a = MaxIntSet.new(3)
 
-a.insert(0)
-a.insert(1)
-a.insert(2)
-# a.insert(5)
+#test cases
+
+# a.insert(0)
+# a.insert(1)
+# a.insert(2)
+# # a.insert(5)
 
 
-a.remove(1)
-# a.remove(4)
+# a.remove(1)
+# # a.remove(4)
 
-# puts a.store 
+# # puts a.store 
 
-p a.include?(2)
+# p a.include?(2)
 # a.include?(7)
 
 
@@ -65,18 +67,24 @@ class IntSet
   end
 
   def insert(num)
+    self[num] << num
   end
 
+
   def remove(num)
+    if include?(num)
+      self[num].delete(num)
+    end
   end
 
   def include?(num)
+    self[num].include?(num)
   end
 
   private
 
   def [](num)
-    # optional but useful; return the bucket corresponding to `num`
+    @store[num % num_buckets]
   end
 
   def num_buckets
@@ -84,6 +92,17 @@ class IntSet
   end
 end
 
+a = IntSet.new
+
+a.insert(20)
+a.insert(5)
+a.insert(10)
+a.remove(5)
+p a
+a.remove(20)
+p a
+a.insert(-10)
+p a
 class ResizingIntSet
   attr_reader :count
 
